@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Princess 💖</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff, #ffc0cb);
+      color: #d63384;
+    }
+
+    h1 {
+      margin-top: 70px;
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.4em;
+      margin: 20px auto;
+      max-width: 700px;
+      line-height: 1.6em;
+    }
+
+    .valentine-question {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 1.3em;
+      padding: 12px 28px;
+      margin: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: white;
+      color: #ff4d6d;
+      border: 2px solid #ff4d6d;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    img {
+      width: 220px;
+      height: auto;
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Hey Princess ❤️💗</h1>
+
+    <p>
+      I know we’ve been on a rough patch, with arguments, disagreements, and misunderstandings…
+      but I don’t mind giving us a chance if you don’t mind. No rush, no pressure — at your pace.
+      Let’s share this moment together.
+    </p>
+
+    <div class="valentine-question">
+      Will you be my Valentine? 💌
+    </div>
+
+    <div class="buttons">
+      <button id="yesBtn" onclick="sayYes()">Yes 😍</button>
+      <button id="noBtn" onclick="growYes()">No 🙈</button>
+    </div>
+  </div>
+
+  <script>
+    // Floating hearts background
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = Math.random() > 0.5 ? "💗" : "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+
+    let yesSize = 1;
+
+    function growYes() {
+      yesSize += 0.4;
+      document.getElementById("yesBtn").style.transform = "scale(" + yesSize + ")";
+    }
+
+    function sayYes() {
+      document.body.innerHTML = `
+        <div style="text-align:center; margin-top:60px; font-family:Arial; color:#d63384;">
+          <h1>😍❤️ She Said Yes! ❤️😍</h1>
+          <h2>Love you Princess 💖</h2>
+          <p>Hope we only connect better and grow more fond of each other from here.</p>
+
+          <h3>✨ Your Beautiful Picture ✨</h3>
+          <img src="HER-PHOTO.jpg" alt="Her Picture">
+
+          <h3>💞 Our Memories Together 💞</h3>
+          <img src="US1.jpg" alt="Us together">
+          <img src="US2.jpg" alt="Us together">
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
