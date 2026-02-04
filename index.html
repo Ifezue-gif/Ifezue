@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Princess 💖</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff, #ffc0cb);
+      color: #d63384;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.4em;
+      margin: 20px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 1.3em;
+      padding: 12px 28px;
+      margin: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: white;
+      color: #ff4d6d;
+      border: 2px solid #ff4d6d;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Hey Princess 👑💖</h1>
+    <p>I’ve been meaning to ask in person but we haven’t gotten the opportunity to...</p>
+    <h2>Will you be my Valentine? 💌</h2>
+
+    <div class="buttons">
+      <button id="yesBtn" onclick="sayYes()">Yes 😍</button>
+      <button id="noBtn" onclick="growYes()">No 🙈</button>
+    </div>
+  </div>
+
+  <script>
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = Math.random() > 0.5 ? "💗" : "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+
+    let yesSize = 1;
+
+    function growYes() {
+      yesSize += 0.3;
+      document.getElementById("yesBtn").style.transform = "scale(" + yesSize + ")";
+    }
+
+    function sayYes() {
+      document.body.innerHTML = `
+        <div style="text-align:center; margin-top:120px; font-family:Arial; color:#d63384;">
+          <h1>😍❤️</h1>
+          <h2>Love you Princess 💖</h2>
+          <p>Hope we only connect better and grow more fond of each other from here.</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
