@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Princess 💖</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff, #ffc0cb);
+      color: #d63384;
+    }
+
+    h1 {
+      margin-top: 70px;
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.4em;
+      margin: 20px auto;
+      max-width: 700px;
+      line-height: 1.6em;
+    }
+
+    .valentine-question {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 1.3em;
+      padding: 12px 28px;
+      margin: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: white;
+      color: #ff4d6d;
+      border: 2px solid #ff4d6d;
+    }
+
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    img {
+      width: 220px;
+      height: auto;
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Gift boxes style */
+    .gift-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .gift-box {
+      width: 150px;
+      height: 150px;
+      background-color: #ffe5e5;
+      border: 2px solid #d6336c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 24px;
+      color: #d6336c;
+      transition: transform 0.3s;
+    }
+    .gift-box:hover {
+      transform: scale(1.1);
+    }
+
+    #caption {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #d6336c;
+    }
+
+    .final-images {
+      display: none;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .final-images img {
+      width: 220px;
+      border: 2px solid #d6336c;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Hey Princess ❤️💗</h1>
+
+    <p>
+      I know we’ve been on a rough patch, with arguments, disagreements, and misunderstandings…
+      but I don’t mind giving us a chance if you don’t mind. No rush, no pressure — at your pace.
+      Let’s share this moment together.
+    </p>
+
+    <div class="valentine-question">
+      Will you be my Valentine? 💌
+    </div>
+
+    <div class="buttons">
+      <button id="yesBtn" onclick="showGiftBoxes()">Yes 😍</button>
+      <button id="noBtn" onclick="growYes()">No 🙈</button>
+    </div>
+  </div>
+
+  <div class="content" id="giftSection" style="display:none;">
+    <h2>Choose a Gift Box 🎁</h2>
+    <div class="gift-container">
+      <div class="gift-box" onclick="openGift(0)">🎁</div>
+      <div class="gift-box" onclick="openGift(1)">🎁</div>
+      <div class="gift-box" onclick="openGift(2)">🎁</div>
+    </div>
+    <p id="caption"></p>
+
+    <div class="final-images" id="finalImages">
+      <img src="HER-PHOTO.jpg" alt="Her Picture">
+      <img src="US1.jpg" alt="Us together">
+      <img src="US2.jpg" alt="Us together">
+    </div>
+  </div>
+
+  <script>
+    // Floating hearts background
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = Math.random() > 0.5 ? "💗" : "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+
+    let yesSize = 1;
+
+    function growYes() {
+      yesSize += 0.4;
+      document.getElementById("yesBtn").style.transform = "scale(" + yesSize + ")";
+    }
+
+    function showGiftBoxes() {
+      document.querySelector(".content").style.display = "none"; // hide main content
+      document.getElementById("giftSection").style.display = "block"; // show gift boxes
+    }
+
+    const captions = ["Good choice!", "Good choice!", "Good choice!"];
+
+    function openGift(index) {
+      document.getElementById('caption').textContent = captions[index];
+      setTimeout(() => {
+        document.getElementById('finalImages').style.display = "flex";
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
