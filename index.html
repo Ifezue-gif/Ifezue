@@ -75,14 +75,6 @@
       padding: 20px;
     }
 
-    img {
-      width: 220px;
-      height: auto;
-      border-radius: 15px;
-      margin: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
     /* Gift boxes style */
     .gift-container {
       display: flex;
@@ -116,15 +108,15 @@
       color: #d6336c;
     }
 
-    .final-images {
+    .final-videos {
       display: none;
       margin-top: 30px;
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
     }
-    .final-images img {
-      width: 220px;
+    .final-videos video {
+      width: 300px;
       border: 2px solid #d6336c;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -137,8 +129,8 @@
     <h1>Hey Princess ❤️💗</h1>
 
     <p>
-      I know we’ve been on a rough patch, with arguments, disagreements, and misunderstandings…
-      but I don’t mind giving us a chance if you don’t mind. No rush, no pressure — at your pace.
+      I know we’ve been on a rough patch, with arguments, disagreements, and misunderstandins
+      but I want to give us a chance. No rush, no pressure, at your pace.
       Let’s share this moment together.
     </p>
 
@@ -161,10 +153,10 @@
     </div>
     <p id="caption"></p>
 
-    <div class="final-images" id="finalImages">
-      <img src="HER-PHOTO.jpg" alt="Her Picture">
-      <img src="US1.jpg" alt="Us together">
-      <img src="US2.jpg" alt="Us together">
+    <div class="final-videos" id="finalVideos">
+      <video controls src="HER-VIDEO.mp4"></video>
+      <video controls src="US1-VIDEO.mp4"></video>
+      <video controls src="US2-VIDEO.mp4"></video>
     </div>
   </div>
 
@@ -178,32 +170,26 @@
       heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
       heart.style.fontSize = (Math.random() * 20 + 15) + "px";
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+      setTimeout(() => heart.remove(), 5000);
     }
-
     setInterval(createHeart, 300);
 
     let yesSize = 1;
-
     function growYes() {
       yesSize += 0.4;
       document.getElementById("yesBtn").style.transform = "scale(" + yesSize + ")";
     }
 
     function showGiftBoxes() {
-      document.querySelector(".content").style.display = "none"; // hide main content
-      document.getElementById("giftSection").style.display = "block"; // show gift boxes
+      document.querySelector(".content").style.display = "none";
+      document.getElementById("giftSection").style.display = "block";
     }
 
     const captions = ["Good choice!", "Good choice!", "Good choice!"];
-
     function openGift(index) {
       document.getElementById('caption').textContent = captions[index];
       setTimeout(() => {
-        document.getElementById('finalImages').style.display = "flex";
+        document.getElementById('finalVideos').style.display = "flex";
       }, 1000);
     }
   </script>
